@@ -43,40 +43,12 @@ app.get('/help', (req, res) => {
   })
 })
 
-// app.get('/weather', (req, res) => {
-//   if (!req.query.address) {
-//     return res.send({
-//       error: 'You must provide an address!'
-//     })
-//   }
-
-//   geocode(
-//     req.query.address,
-//     (error, { latitude, longitude, location } = {}) => {
-//       if (error) {
-//         return res.send({ error })
-//       }
-
-//       forecast(latitude, longitude, (error, forecastData) => {
-//         if (error) {
-//           return res.send({ error })
-//         }
-
-//         res.send({
-//           forecast: forecastData,
-//           location,
-//           address: req.query.address
-//         })
-//       })
-//     }
-//   )
-// })
 app.get('/weather', (req, res) => {
   const address = req.query.address
 
   if (!address) {
     return res.send('Please, enter location as command line argument')
-  } else {
+  }
     geocode(address, (error, { latitude, longitude, location } = {}) => {
       if (error) {
         return res.send({ error })
@@ -94,8 +66,6 @@ app.get('/weather', (req, res) => {
         })
       })
     })
-  }
-
 })
 
 app.get('/help/*', (req, res) => {
