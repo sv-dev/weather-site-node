@@ -31,7 +31,7 @@ app.get('/about', (req, res) => {
   res.render('about', {
     title: 'About Me',
     name: 'John Johnson',
-    age: 33
+    age: 27
   })
 })
 
